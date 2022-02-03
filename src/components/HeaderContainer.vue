@@ -9,6 +9,11 @@
             placeholder="Search Movies"
             v-model="searchInput"
             >
+            <button
+            @click="$emit('searchApi', searchInput)"
+            >
+                GO
+            </button>
         </div>
 
     </header>
