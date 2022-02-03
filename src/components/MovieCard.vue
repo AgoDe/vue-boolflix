@@ -7,7 +7,6 @@
                 <div 
                 class="movie-info"
                 >
-                    
                         <h3>Titolo: </h3>
                         <div>{{movie.title}}</div>
                    
@@ -16,7 +15,9 @@
                         <div>{{movie.original_title}}</div>
                    
                         <h3 class="title">Lingua originale: </h3>
-                        <div>{{movie.original_language}}</div>
+                        <img
+                            :alt="`${movie.original_language}-fla`"
+                            :src="`http://purecatamphetamine.github.io/country-flag-icons/3x2/${flagLang(movie.original_language)}.svg`"/>
                     
                         <h3 class="title">Voto: </h3>
                         <div>{{movie.vote_average}}</div>
@@ -37,7 +38,9 @@ export default {
         }
     },
     methods: {
-       
+       flagLang: function(language) {
+         return language === 'en' ? 'GB' : language.toUpperCase();
+       }
         
     }
     
@@ -73,6 +76,10 @@ export default {
             h3 {
                 margin-top: 10px;
                 margin-bottom: 5px;
+            }
+            img {
+                width: 30px;
+                height: 20px;
             }
 
            
