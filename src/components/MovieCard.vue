@@ -65,11 +65,14 @@ export default {
         height: 300px;
         position: relative;
         margin: 30px 20px;
+        box-shadow:  2px 2px 7px 4px #303443;
+        border-radius: 2px;
 
         img{
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 2px;
         }
         .movie-info {
             display: none;

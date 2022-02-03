@@ -35,12 +35,18 @@ export default {
 
 <style lang="scss" scoped>
 
-.movies-container { 
+main {
+    background: linear-gradient(0deg, rgba(48,52,67,1) 6%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 94%);
+    height: calc(100vh - 80px);
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+
     
+    .movies-container { 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        
+    }
 }
 
 </style>

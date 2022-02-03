@@ -1,8 +1,19 @@
 <template>
     <header>
 
-        <img src="../assets/boolflix-logo.png" alt="logo">
+        <img src="../assets/booley-plus.png" alt="logo">
 
+        <ul>
+            <li>
+                <a href=""> HOME</a>
+            </li>
+            <li>
+                <a href=""> CERCA</a>
+            </li>
+            <li>
+                <a href="">LA MIA LISTA</a>
+            </li>
+        </ul>
         <div class="search-box">
             <input
             type="text"
@@ -47,5 +58,22 @@ export default {
         img {
             height: 60px;
         }
+
+        ul {
+            list-style: none;
+            display: flex;
+
+            li {
+                padding: 0 15px;
+                
+                a {
+                    color: #f9f9f9;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+            }
+            
+        }
+        
     }
 </style>

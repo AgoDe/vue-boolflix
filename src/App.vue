@@ -75,7 +75,7 @@ export default {
   font-family: 'Montserrat', sans-serif;
 }
  #app {
-   background: rgb(25, 25, 25);
-   color: white;
+   background: black;
+   color: #f9f9f9;
  }
 </style>
