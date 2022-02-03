@@ -8,6 +8,7 @@
             type="text"
             placeholder="Search Movies"
             v-model="searchInput"
+            @keyup.enter="$emit('searchApi', searchInput)"
             >
             <button
             @click="$emit('searchApi', searchInput)"

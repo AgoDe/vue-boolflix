@@ -4,16 +4,20 @@
 
                 <div class="movie-info">
                     <div>
-                        <span>Titolo:</span>
-                        <span>The Avengers</span>
+                        <span>Titolo: </span>
+                        <span>{{movie.title}}</span>
                     </div>
                     <div>
-                        <span>Titolo originale:</span>
-                        <span>The Avengers</span>
+                        <span>Titolo originale: </span>
+                        <span>{{movie.original_title}}</span>
                     </div>
                     <div>
-                        <span>voto:</span>
-                        <span>5</span>
+                        <span>Lingua originale: </span>
+                        <span>{{movie.original_language}}</span>
+                    </div>
+                    <div>
+                        <span>voto: </span>
+                        <span>{{movie.vote_average}}</span>
                     </div>
 
                 </div>
@@ -22,6 +26,9 @@
 
 <script>
 export default {
+    props: {
+        movie: Object,
+    }
     
 }
 </script>
@@ -34,5 +41,5 @@ export default {
 
         border: white 1px solid;
     }
-    
+
 </style>
