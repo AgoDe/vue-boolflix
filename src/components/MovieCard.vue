@@ -14,23 +14,24 @@
                         <div v-else >{{item.name}}</div>
                    
                         <div v-if="!(item.original_title === item.title) && item.type == 'movie'">
-                            <h3 class="title">Titolo originale: </h3>
+                            <h3>Titolo originale: </h3>
                             <div>{{item.original_title}}</div>
                         </div>
                         <div v-if="!(item.original_name === item.name)">
-                            <h3 class="title">Titolo originale: </h3>
+                            <h3>Titolo originale: </h3>
                             <div>{{item.original_title}}</div>
                         </div>
                    
-                        <h3
-                        
-                         class="title">Lingua originale: </h3>
+                        <h3>Lingua originale: </h3>
                         <img
                             :alt="`${item.original_language}-fla`"
                             :src="`http://purecatamphetamine.github.io/country-flag-icons/3x2/${flagLang(item.original_language)}.svg`"/>
                     
                         <h3 class="title">Voto: </h3>
                         <div>{{item.vote_average}}</div>
+                        <div>
+                            {{ voteStar(item.vote_average)}}
+                        </div>
                     
 
                 </div>
@@ -50,6 +51,14 @@ export default {
     methods: {
        flagLang: function(language) {
          return language === 'en' ? 'GB' : language.toUpperCase();
+       },
+       voteStar: function(number) {
+           let vote = ''
+           const star = Math.round(number / 2)
+           for(let i = 0; i < star; i++) {
+               vote += '+'
+           }
+           return vote
        }
         
     }
@@ -82,7 +91,7 @@ export default {
             left: 0;
             top: 0;
             padding: 10px 8px;
-            background: rgba($color: #333, $alpha: 0.8);
+            background: rgba($color: #303443, $alpha: 0.9);
 
             text-align: center;
 
