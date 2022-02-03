@@ -28,5 +28,4 @@ export default {
 
 <style lang="scss">
 
-</styl
-HeaderContainere>
+</style>
