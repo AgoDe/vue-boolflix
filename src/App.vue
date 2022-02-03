@@ -8,7 +8,9 @@
     <!-- / header container -->
 
     <!-- main container -->
-    <main-container/>
+    <main-container
+    :filteredMovies="filteredMovies"
+    />
     <!-- / main container -->
 
   
@@ -38,7 +40,7 @@ export default {
         console.log('data',response.data)
         console.log('input', searchInput)
 
-        this.filteredMovies = response.data;
+        this.filteredMovies = response.data.results;
       })
     }
   }
@@ -48,7 +50,13 @@ export default {
 
 <style lang="scss">
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
  #app {
    background: rgb(25, 25, 25);
+   color: white;
  }
 </style>
