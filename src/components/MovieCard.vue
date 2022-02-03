@@ -2,28 +2,35 @@
      <div
         class="movie-card">
                 <img 
-                :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`"
-                :alt="movie.original_title">
+                :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`"
+                :alt="item.original_title">
                 <div 
                 class="movie-info"
                 >
+                        <h3 v-if="item.type == 'movie'">MOVIE</h3>
+                        <h3 v-else>TV SERIES</h3>
                         <h3>Titolo: </h3>
-                        <div>{{movie.title}}</div>
+                        <div v-if="item.type == 'movie'">{{item.title}}</div>
+                        <div v-else >{{item.name}}</div>
                    
-                        <div v-if="!(movie.original_title === movie.title)">
+                        <div v-if="!(item.original_title === item.title) && item.type == 'movie'">
                             <h3 class="title">Titolo originale: </h3>
-                            <div>{{movie.original_title}}</div>
+                            <div>{{item.original_title}}</div>
+                        </div>
+                        <div v-if="!(item.original_name === item.name)">
+                            <h3 class="title">Titolo originale: </h3>
+                            <div>{{item.original_title}}</div>
                         </div>
                    
                         <h3
                         
                          class="title">Lingua originale: </h3>
                         <img
-                            :alt="`${movie.original_language}-fla`"
-                            :src="`http://purecatamphetamine.github.io/country-flag-icons/3x2/${flagLang(movie.original_language)}.svg`"/>
+                            :alt="`${item.original_language}-fla`"
+                            :src="`http://purecatamphetamine.github.io/country-flag-icons/3x2/${flagLang(item.original_language)}.svg`"/>
                     
                         <h3 class="title">Voto: </h3>
-                        <div>{{movie.vote_average}}</div>
+                        <div>{{item.vote_average}}</div>
                     
 
                 </div>
@@ -33,7 +40,7 @@
 <script>
 export default {
     props: {
-        movie: Object,
+        item: Object,
     },
     data() {
         return {

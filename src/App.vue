@@ -9,7 +9,7 @@
 
     <!-- main container -->
     <main-container
-    :filteredMovies="filteredMovies"
+    :generalFilter="generalFilter"
     />
     <!-- / main container -->
 
@@ -27,25 +27,43 @@ import MainContainer from './components/MainContainer.vue';
 export default {
   components: {
     HeaderContainer,
-    MainContainer 
+    MainContainer,
   },
   data() {
     return {
       filteredMovies: [],
+      filteredTv: [],
+      generalFilter: [],
     }
   },
   methods: {
     searchApi: function(searchInput) {
+
+      this.generalFilter = [];
       axios.get(`https://api.themoviedb.org/3/search/movie/?api_key=ad1668ee1fca2cd9ebdd9b7319f4ce6c&query=${searchInput}`).then((response) => {
-        console.log('data',response.data)
-        console.log('input', searchInput)
-
         this.filteredMovies = response.data.results;
-      })
-    }
-  }
+        this.filteredMovies.forEach(element => {
+          element.type = 'movie';
+          this.generalFilter.push(element)
+        });
+      }); 
 
+      axios.get(`https://api.themoviedb.org/3/search/tv/?api_key=ad1668ee1fca2cd9ebdd9b7319f4ce6c&query=${searchInput}`).then((response) => {
+        this.filteredTv = response.data.results;
+        this.filteredTv.forEach(element => {
+          element.type = 'tv';
+        this.generalFilter.push(element)
+        });
+      }); 
+
+
+      
+    },
+  }
+      
+    
 }
+
 </script>
 
 <style lang="scss">

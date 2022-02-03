@@ -2,22 +2,27 @@
     <main>
 
         <div class="movies-container">
-           
-           <movie-card
-            v-for="movie in filteredMovies"
-            :key="movie.id"
-            :movie="movie"
-           />
+            <movie-card
+            v-for="item in generalFilter"
+            :key="item.id"
+            :item="item"
+            />
+              
         </div>
     </main>
 </template>
 
 <script>
 import MovieCard from './MovieCard.vue'
+// import TvCard from './TvCard.vue'
+
 export default {
-  components: { MovieCard },
+  components: { 
+    MovieCard,
+    // TvCard,
+   },
     props: {
-        filteredMovies: Array,
+        generalFilter: Array,
 
     },
     data() {
