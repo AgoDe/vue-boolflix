@@ -10,11 +10,14 @@
                         <h3>Titolo: </h3>
                         <div>{{movie.title}}</div>
                    
-                    
-                        <h3 class="title">Titolo originale: </h3>
-                        <div>{{movie.original_title}}</div>
+                        <div v-if="!(movie.original_title === movie.title)">
+                            <h3 class="title">Titolo originale: </h3>
+                            <div>{{movie.original_title}}</div>
+                        </div>
                    
-                        <h3 class="title">Lingua originale: </h3>
+                        <h3
+                        
+                         class="title">Lingua originale: </h3>
                         <img
                             :alt="`${movie.original_language}-fla`"
                             :src="`http://purecatamphetamine.github.io/country-flag-icons/3x2/${flagLang(movie.original_language)}.svg`"/>
