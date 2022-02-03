@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import HeaderContainer from './components/HeaderContainer.vue'
-import MainContainer from './components/MainContainer.vue'
+import HeaderContainer from './components/HeaderContainer.vue';
+import MainContainer from './components/MainContainer.vue';
 
 
 export default {
@@ -28,4 +28,7 @@ export default {
 
 <style lang="scss">
 
+ #app {
+   background: rgb(25, 25, 25);
+ }
 </style>
