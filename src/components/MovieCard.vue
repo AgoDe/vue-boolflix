@@ -7,7 +7,8 @@
                 <div 
                 class="movie-info"
                 >
-                        
+                        <i @click="$emit('addFavorites', item)" class="far fa-heart"></i>
+
                         <h3>Titolo: </h3>
                         <div v-if="item.type == 'movie'">{{item.title}}</div>
                         <div v-else >{{item.name}}</div>
@@ -108,6 +109,9 @@ export default {
 
             text-align: center;
 
+            .fa-heart {
+
+            }
             h3 {
                 margin-top: 10px;
                 margin-bottom: 5px;

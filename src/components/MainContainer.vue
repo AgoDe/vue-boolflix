@@ -11,6 +11,7 @@
                 v-for="item in popularMovies"
                 :key="item.id"
                 :item="item"
+                @addFavorites="$emit('addFavorites', item)"
                 />    
             </div>
 
@@ -21,6 +22,7 @@
                 v-for="item in popularTv"
                 :key="item.id"
                 :item="item"
+                @addFavorites="$emit('addFavorites', item)"
                 />    
             </div>
         </div>
@@ -29,6 +31,7 @@
         class="search-container"
         v-if="searchVisible"
         >
+        
             <input 
             type="text"
             placeholder="Cerca per Titolo"
@@ -40,6 +43,7 @@
                 v-for="item in generalFilter"
                 :key="item.id"
                 :item="item"
+                @addFavorites="$emit('addFavorites', item)"
                 />    
             </div>
         </div>
@@ -47,7 +51,11 @@
          <div 
         class="favorites-container"
         v-if="favoritesVisible">
-            preferiti
+             <movie-card
+                v-for="item in favorites"
+                :key="item.id"
+                :item="item"
+                />  
         </div>
 
 
@@ -67,6 +75,7 @@ export default {
         generalFilter: Array,
         popularMovies: Array,
         popularTv: Array,
+        favorites:Array,
         searchVisible: Boolean,
         homeVisible: Boolean,
         favoritesVisible: Boolean,
@@ -76,6 +85,8 @@ export default {
             searchInput: ''
         }
     },
+    methods: {
+    }
 }
 </script>
 
@@ -97,17 +108,6 @@ main {
             flex-shrink: 0;
             max-height: 360px;
             overflow-x: auto;
-
-            // &::-webkit-scrollbar{
-            //     height:8px;
-            //     margin-right: 10px;
-            // }
-            // &::-webkit-scrollbar-thumb{
-            //     -webkit-border-radius:4px;
-            //     background-color: #303443;
-            //     border: none;  
-            //  }
-           
         }
         
     }
@@ -141,6 +141,15 @@ main {
             flex-wrap: wrap;
             justify-content: space-around;
         }
+    }
+
+    .favorites-container {
+           width: 100%;
+            height: 680px;
+            overflow-y: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
     }
 }
 

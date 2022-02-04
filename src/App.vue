@@ -14,12 +14,14 @@
     <!-- main container -->
     <main-container
     @searchApi="searchApi"
+    @addFavorites="addFavorites"
     :generalFilter="generalFilter"
     :searchVisible="searchVisible"
     :homeVisible="homeVisible"
     :favoritesVisible="favoritesVisible"
     :popularMovies="popularMovies"
     :popularTv="popularTv"
+    :favorites="favorites"
     />
     <!-- / main container -->
 
@@ -47,6 +49,7 @@ export default {
       generalFilter: [],
       popularMovies: [],
       popularTv: [],
+      favorites: [],
       searchVisible: false,
       homeVisible: true,
       favoritesVisible: false,
@@ -56,20 +59,24 @@ export default {
   mounted() {
     // array popular movies
     axios.get('https://api.themoviedb.org/3/movie/popular?api_key=ad1668ee1fca2cd9ebdd9b7319f4ce6c').then((res) => {
-      console.log(res.data)
       for(let i = 0; i < 20; i++) {
+        res.data.results[i].type = 'movie'
         this.popularMovies.push(res.data.results[i])
       }
     })
     // array popular tv
     axios.get('https://api.themoviedb.org/3/tv/popular?api_key=ad1668ee1fca2cd9ebdd9b7319f4ce6c').then((res) => {
-      console.log(res.data)
       for(let i = 0; i < 20; i++) {
+        res.data.results[i].type = 'tv'
         this.popularTv.push(res.data.results[i])
       }
     })
   },
   methods: {
+    addFavorites: function(item) {
+        this.favorites.push(item)
+        console.log('aggiunto')
+    },
     activeSearch: function() {
       this.searchVisible = true
       this.homeVisible = false;

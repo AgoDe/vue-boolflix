@@ -13,7 +13,7 @@
                 CERCA 
             </li>
             <li @click="$emit('activeFavorites')">
-                <i class="fas fa-star"></i>
+                <i class="fas fa-heart"></i>
                 LA MIA LISTA    
             </li>
         </ul>
