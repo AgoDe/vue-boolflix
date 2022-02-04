@@ -82,10 +82,11 @@ export default {
 @import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
 
     .movie-card {
-        width: 200px;
+        min-width: 200px;
+        max-width: 200px;
         height: 300px;
         position: relative;
-        margin: 30px 20px;
+        margin: 20px 20px;
         box-shadow:  2px 2px 7px 4px #303443;
         border-radius: 2px;
 

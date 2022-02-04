@@ -5,6 +5,9 @@
     <header-container
     @searchApi="searchApi"
     @activeSearch="activeSearch"
+    @activeHome="activeHome"
+    @activeFavorites="activeFavorites"
+
     />
     <!-- / header container -->
 
@@ -13,6 +16,10 @@
     @searchApi="searchApi"
     :generalFilter="generalFilter"
     :searchVisible="searchVisible"
+    :homeVisible="homeVisible"
+    :favoritesVisible="favoritesVisible"
+    :popularMovies="popularMovies"
+    :popularTv="popularTv"
     />
     <!-- / main container -->
 
@@ -38,13 +45,45 @@ export default {
       filteredMovies: [],
       filteredTv: [],
       generalFilter: [],
+      popularMovies: [],
+      popularTv: [],
       searchVisible: false,
+      homeVisible: true,
+      favoritesVisible: false,
       
     }
+  },
+  mounted() {
+    // array popular movies
+    axios.get('https://api.themoviedb.org/3/movie/popular?api_key=ad1668ee1fca2cd9ebdd9b7319f4ce6c').then((res) => {
+      console.log(res.data)
+      for(let i = 0; i < 20; i++) {
+        this.popularMovies.push(res.data.results[i])
+      }
+    })
+    // array popular tv
+    axios.get('https://api.themoviedb.org/3/tv/popular?api_key=ad1668ee1fca2cd9ebdd9b7319f4ce6c').then((res) => {
+      console.log(res.data)
+      for(let i = 0; i < 20; i++) {
+        this.popularTv.push(res.data.results[i])
+      }
+    })
   },
   methods: {
     activeSearch: function() {
       this.searchVisible = true
+      this.homeVisible = false;
+      this.favoritesVisible = false;
+    },
+    activeHome: function() {
+      this.homeVisible = true;
+      this.searchVisible = false;
+      this.favoritesVisible = false;
+    },
+    activeFavorites: function() {
+      this.favoritesVisible = true;
+      this.homeVisible = false;
+      this.searchVisible = false;
     },
 
     searchApi: function(searchInput) {
@@ -80,6 +119,25 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+
+  /* scrollbar */
+  ::-webkit-scrollbar{
+    width:0.5em;
+    height:0.5em;
+    margin-right: 10px;
+  }
+  ::-webkit-scrollbar-thumb{
+    min-height:0.8em;
+    min-width:0.8em;
+    -webkit-border-radius:4px;
+    background-color: #303443;
+    border: none;
+  }
+  ::-webkit-scrollbar:active{
+    background-color:#414450;
+  }
+  /* / scrollbar */
+
 }
  #app {
    background: black;

@@ -4,7 +4,7 @@
         <img src="../assets/booley-plus.png" alt="logo">
 
         <ul>
-            <li> 
+            <li @click="$emit('activeHome')"> 
                 <i class="fas fa-home"></i>
                 HOME
             </li>
@@ -12,7 +12,7 @@
                 <i class="fas fa-search"></i> 
                 CERCA 
             </li>
-            <li>
+            <li @click="$emit('activeFavorites')">
                 <i class="fas fa-star"></i>
                 LA MIA LISTA    
             </li>
