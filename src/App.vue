@@ -4,12 +4,15 @@
     <!-- header container -->
     <header-container
     @searchApi="searchApi"
+    @activeSearch="activeSearch"
     />
     <!-- / header container -->
 
     <!-- main container -->
     <main-container
+    @searchApi="searchApi"
     :generalFilter="generalFilter"
+    :searchVisible="searchVisible"
     />
     <!-- / main container -->
 
@@ -35,9 +38,15 @@ export default {
       filteredMovies: [],
       filteredTv: [],
       generalFilter: [],
+      searchVisible: false,
+      
     }
   },
   methods: {
+    activeSearch: function() {
+      this.searchVisible = true
+    },
+
     searchApi: function(searchInput) {
 
       this.generalFilter = [];
@@ -65,7 +74,7 @@ export default {
 
 <style lang="scss">
 @import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 * {
   margin: 0;
   padding: 0;

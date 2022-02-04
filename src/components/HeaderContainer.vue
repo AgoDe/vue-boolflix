@@ -4,38 +4,20 @@
         <img src="../assets/booley-plus.png" alt="logo">
 
         <ul>
-            <li>
-                <a href=""> 
-                    <i class="fas fa-home"></i>
-                    HOME
-                </a>
+            <li> 
+                <i class="fas fa-home"></i>
+                HOME
+            </li>
+            <li @click="$emit('activeSearch')">
+                <i class="fas fa-search"></i> 
+                CERCA 
             </li>
             <li>
-                <a href="">
-                    <i class="fas fa-search"></i> 
-                    CERCA
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i class="fas fa-star"></i>
-                    LA MIA LISTA
-                </a>
+                <i class="fas fa-star"></i>
+                LA MIA LISTA    
             </li>
         </ul>
-        <div class="search-box">
-            <input
-            type="text"
-            placeholder="Search Movies"
-            v-model="searchInput"
-            @keyup.enter="$emit('searchApi', searchInput)"
-            >
-            <button
-            @click="$emit('searchApi', searchInput)"
-            >
-                GO
-            </button>
-        </div>
+        
 
     </header>
 </template>
@@ -47,7 +29,7 @@ export default {
     },
     data() {
         return {
-            searchInput: '',
+            
 
         }
     }
@@ -73,13 +55,13 @@ export default {
             display: flex;
 
             li {
-                padding: 0 15px;
+                margin: 0 15px;
+                cursor: pointer;
+                font-weight: bold;
+                color: #f9f9f9;
+                text-decoration: none;
 
-                a {
-                    color: #f9f9f9;
-                    text-decoration: none;
-                    font-weight: bold;
-                }
+               
             }
             
         }
