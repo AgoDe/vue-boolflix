@@ -7,8 +7,7 @@
                 <div 
                 class="movie-info"
                 >
-                        <h3 v-if="item.type == 'movie'">MOVIE</h3>
-                        <h3 v-else>TV SERIES</h3>
+                        
                         <h3>Titolo: </h3>
                         <div v-if="item.type == 'movie'">{{item.title}}</div>
                         <div v-else >{{item.name}}</div>
@@ -24,13 +23,29 @@
                    
                         <h3>Lingua originale: </h3>
                         <img
-                            :alt="`${item.original_language}-fla`"
+                            :alt="`${item.original_language}-flag`"
                             :src="`http://purecatamphetamine.github.io/country-flag-icons/3x2/${flagLang(item.original_language)}.svg`"/>
                     
                         <h3 class="title">Voto: </h3>
-                        <div>{{item.vote_average}}</div>
                         <div>
-                            {{ voteStar(item.vote_average)}}
+                            <i 
+                            v-for="index in voteStar(item.vote_average)"
+                            :key="index"
+                            class="fas fa-star"></i>
+                        </div>
+
+                        <!-- card footer -->
+                        <div 
+                        class="card-footer movie"
+                        v-if="item.type == 'movie'"
+                        >
+                            MOVIE
+                        </div>
+                        <div 
+                        class="card-footer tv" 
+                        v-else
+                        >
+                            TV SERIES
                         </div>
                     
 
@@ -53,21 +68,16 @@ export default {
          return language === 'en' ? 'GB' : language.toUpperCase();
        },
        voteStar: function(number) {
-           let vote = ''
-           const star = Math.round(number / 2)
-           for(let i = 0; i < star; i++) {
-               vote += '+'
-           }
-           return vote
-       }
-        
-    }
+           return Math.round(number / 2)
+          
+        }
+    },
     
 }
 </script>
 
 <style lang="scss" scoped>
-
+@import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
 
     .movie-card {
         width: 200px;
@@ -102,14 +112,32 @@ export default {
             img {
                 width: 30px;
                 height: 20px;
+            }   
+            .fa-star {
+                color: gold;
+                margin: 2px;
+            }
+            .card-footer {
+                position: absolute;
+                bottom: 1px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                border-radius: 3px;
+                opacity: 0.8;
+            }
+            .card-footer.movie {
+                background: blue;
+            }
+            .card-footer.tv {
+                background: green;
             }
 
-           
-            
         }
          &:hover>.movie-info{
                 display: inline-block;
             }
+
     }
 
 </style>

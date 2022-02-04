@@ -5,13 +5,22 @@
 
         <ul>
             <li>
-                <a href=""> HOME</a>
+                <a href=""> 
+                    <i class="fas fa-home"></i>
+                    HOME
+                </a>
             </li>
             <li>
-                <a href=""> CERCA</a>
+                <a href="">
+                    <i class="fas fa-search"></i> 
+                    CERCA
+                </a>
             </li>
             <li>
-                <a href="">LA MIA LISTA</a>
+                <a href="">
+                    <i class="fas fa-star"></i>
+                    LA MIA LISTA
+                </a>
             </li>
         </ul>
         <div class="search-box">
@@ -65,7 +74,7 @@ export default {
 
             li {
                 padding: 0 15px;
-                
+
                 a {
                     color: #f9f9f9;
                     text-decoration: none;

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    
+
     <!-- header container -->
     <header-container
     @searchApi="searchApi"
@@ -12,6 +12,7 @@
     :generalFilter="generalFilter"
     />
     <!-- / main container -->
+
 
   
 
@@ -54,10 +55,7 @@ export default {
           element.type = 'tv';
         this.generalFilter.push(element)
         });
-      }); 
-
-
-      
+      });   
     },
   }
       
@@ -67,6 +65,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 * {
   margin: 0;
@@ -77,5 +76,6 @@ export default {
  #app {
    background: black;
    color: #f9f9f9;
+   height: 100vh;
  }
 </style>
