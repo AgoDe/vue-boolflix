@@ -55,13 +55,12 @@ export default {
           element.type = 'tv';
         this.generalFilter.push(element)
         });
-      });   
+      });  
     },
-  }
-      
-    
-}
 
+  },
+  // end methods
+}
 </script>
 
 <style lang="scss">

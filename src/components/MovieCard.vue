@@ -2,7 +2,7 @@
      <div
         class="movie-card">
                 <img 
-                :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`"
+                :src="posterVerify(item.poster_path)"
                 :alt="item.original_title">
                 <div 
                 class="movie-info"
@@ -23,8 +23,9 @@
                    
                         <h3>Lingua originale: </h3>
                         <img
-                            :alt="`${item.original_language}-flag`"
-                            :src="`http://purecatamphetamine.github.io/country-flag-icons/3x2/${flagLang(item.original_language)}.svg`"/>
+                        :alt="`${item.original_language}-flag`"
+                        :src="`http://purecatamphetamine.github.io/country-flag-icons/3x2/${flagLang(item.original_language)}.svg`"
+                        />
                     
                         <h3 class="title">Voto: </h3>
                         <div>
@@ -35,19 +36,14 @@
                         </div>
 
                         <!-- card footer -->
-                        <div 
-                        class="card-footer movie"
-                        v-if="item.type == 'movie'"
-                        >
+                        <div class="card-footer movie" v-if="item.type == 'movie'">
                             MOVIE
                         </div>
                         <div 
-                        class="card-footer tv" 
-                        v-else
-                        >
+                        class="card-footer tv" v-else>
                             TV SERIES
                         </div>
-                    
+                        <!-- / card footer -->
 
                 </div>
             </div>
@@ -64,12 +60,18 @@ export default {
         }
     },
     methods: {
+        posterVerify: function(item) {
+            if (item == null) {
+                return 'https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile.png'
+            } else {
+                return `https://image.tmdb.org/t/p/w342${item}`
+            }
+        },
        flagLang: function(language) {
          return language === 'en' ? 'GB' : language.toUpperCase();
        },
        voteStar: function(number) {
            return Math.round(number / 2)
-          
         }
     },
     
