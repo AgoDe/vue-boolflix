@@ -3,7 +3,8 @@
 
         <div 
         class="home-container"
-        v-if="homeVisible">
+        v-if="homeVisible"
+        >
             <h3>Film più popolari</h3>
             <div class="popular-movie slider-box">
                 <movie-card
@@ -57,13 +58,15 @@
          <div 
         class="favorites-container"
         v-if="favoritesVisible">
-             <movie-card
+            <div class="card-container">
+                <movie-card
                 v-for="item in favorites"
                 :key="item.id"
                 :item="item"
                 :favorites="favorites"
                 @removeFavorites="$emit('removeFavorites', item)"
                 />  
+            </div>
         </div>
 
 
@@ -99,11 +102,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
 
 main {
     background: linear-gradient(0deg, rgba(48,52,67,1) 6%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 94%);
     height: calc(100vh - 80px);
     
+    .card-container {
+        margin: 0 auto;
+        width: $container-width;
+        height: 600px;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;    
+    }
 
     .home-container {
         max-height: 100%;
@@ -142,18 +154,17 @@ main {
             }  
         }
         .card-container {
-            width: 100%;
+            margin: 0 auto;
+            width: $container-width;
             height: 600px;
             overflow-y: auto;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            flex-wrap: wrap;    
         }
     }
 
     .favorites-container {
            width: 100%;
-            height: 680px;
             overflow-y: auto;
             display: flex;
             flex-wrap: wrap;

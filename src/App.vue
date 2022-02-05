@@ -127,6 +127,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/styles/variables.scss';
+
 @import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 * {
@@ -152,7 +154,6 @@ export default {
     background-color:#414450;
   }
   /* / scrollbar */
-
 }
  #app {
    background: black;
