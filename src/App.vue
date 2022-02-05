@@ -15,6 +15,7 @@
     <main-container
     @searchApi="searchApi"
     @addFavorites="addFavorites"
+    @removeFavorites="removeFavorites"
     :generalFilter="generalFilter"
     :searchVisible="searchVisible"
     :homeVisible="homeVisible"
@@ -76,6 +77,13 @@ export default {
     addFavorites: function(item) {
         this.favorites.push(item)
         console.log('aggiunto')
+    },
+    removeFavorites: function(item) {
+        const filtered = this.favorites.filter((res) => {
+          return res != item
+        })
+        this.favorites = filtered
+        console.log(filtered)
     },
     activeSearch: function() {
       this.searchVisible = true

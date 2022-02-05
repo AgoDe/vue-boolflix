@@ -7,8 +7,9 @@
                 <div 
                 class="movie-info"
                 >
-                        <i @click="$emit('addFavorites', item)" class="far fa-heart"></i>
-
+                        
+                        
+                        
                         <h3>Titolo: </h3>
                         <div v-if="item.type == 'movie'">{{item.title}}</div>
                         <div v-else >{{item.name}}</div>
@@ -46,6 +47,22 @@
                         </div>
                         <!-- / card footer -->
 
+                        <div class=addfav>
+                            <i
+                            @click="$emit('removeFavorites', item)" 
+                            class="fas fa-times"
+                            v-if="favorites.includes(item)"
+                            else>
+                            </i>
+                            <i 
+                            @click="$emit('addFavorites', item)" 
+                            class="fas fa-heart"
+                            :class="{ active : favorites.includes(item)}">
+                            </i>
+
+                           
+                        </div>
+
                 </div>
             </div>
 </template>
@@ -54,6 +71,7 @@
 export default {
     props: {
         item: Object,
+        favorites: Array,
     },
     data() {
         return {
@@ -109,9 +127,6 @@ export default {
 
             text-align: center;
 
-            .fa-heart {
-
-            }
             h3 {
                 margin-top: 10px;
                 margin-bottom: 5px;
@@ -126,18 +141,46 @@ export default {
             }
             .card-footer {
                 position: absolute;
-                bottom: 1px;
+                bottom: 0px;
                 left: 0;
-                width: 100%;
-                text-align: center;
-                border-radius: 3px;
-                opacity: 0.8;
+                width: 110px;
+                height: 40px;
+                text-align: left;
+                padding-left: 5px;
+                line-height: 50px;
+                border-top-right-radius: 100% ;
+                opacity: 0.5;
             }
             .card-footer.movie {
-                background: blue;
+                background: blue; 
             }
             .card-footer.tv {
                 background: green;
+            }
+            .addfav {
+                position: absolute;
+                right: 10px;
+                bottom: 10px;       
+                font-size: 30px;
+
+                .fa-heart {
+                    opacity: 0.6;
+                    &:hover {
+                        color: red;
+                    }
+                }
+                .fa-heart.active {
+                    color: red;
+                    opacity: 1;
+                }
+                .fa-times {
+                    opacity: 0.6;
+                    display: none;
+                }
+                &:hover .fa-times {
+                    display: block;
+                }
+
             }
 
         }

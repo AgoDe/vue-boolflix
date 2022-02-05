@@ -12,6 +12,8 @@
                 :key="item.id"
                 :item="item"
                 @addFavorites="$emit('addFavorites', item)"
+                @removeFavorites="$emit('removeFavorites', item)"
+                :favorites="favorites"
                 />    
             </div>
 
@@ -23,6 +25,9 @@
                 :key="item.id"
                 :item="item"
                 @addFavorites="$emit('addFavorites', item)"
+                @removeFavorites="$emit('removeFavorites', item)"
+
+                :favorites="favorites"
                 />    
             </div>
         </div>
@@ -44,6 +49,7 @@
                 :key="item.id"
                 :item="item"
                 @addFavorites="$emit('addFavorites', item)"
+                @removeFavorites="$emit('removeFavorites', item)"
                 />    
             </div>
         </div>
@@ -55,6 +61,8 @@
                 v-for="item in favorites"
                 :key="item.id"
                 :item="item"
+                :favorites="favorites"
+                @removeFavorites="$emit('removeFavorites', item)"
                 />  
         </div>
 
