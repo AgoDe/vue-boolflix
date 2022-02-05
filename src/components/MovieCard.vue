@@ -150,17 +150,20 @@ export default {
                 line-height: 50px;
                 border-top-right-radius: 100% ;
                 opacity: 0.5;
+                box-shadow: 0 0 3px 1px blue;
             }
             .card-footer.movie {
                 background: blue; 
+                box-shadow: 0 0 3px 1px blue;
             }
             .card-footer.tv {
                 background: green;
+                box-shadow: 0 0 3px 1px green;
             }
             .addfav {
                 position: absolute;
-                right: 10px;
-                bottom: 10px;       
+                right: 7px;
+                bottom: 7px;       
                 font-size: 30px;
 
                 .fa-heart {

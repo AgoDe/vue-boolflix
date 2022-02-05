@@ -26,7 +26,6 @@
                 :item="item"
                 @addFavorites="$emit('addFavorites', item)"
                 @removeFavorites="$emit('removeFavorites', item)"
-
                 :favorites="favorites"
                 />    
             </div>
@@ -48,6 +47,7 @@
                 v-for="item in generalFilter"
                 :key="item.id"
                 :item="item"
+                :favorites="favorites"
                 @addFavorites="$emit('addFavorites', item)"
                 @removeFavorites="$emit('removeFavorites', item)"
                 />    
