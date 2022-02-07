@@ -58,15 +58,15 @@
          <div 
         class="favorites-container"
         v-if="favoritesVisible">
-            <div class="card-container">
-                <movie-card
-                v-for="item in favorites"
-                :key="item.id"
-                :item="item"
-                :favorites="favorites"
-                @removeFavorites="$emit('removeFavorites', item)"
-                />  
-            </div>
+            
+            <movie-card
+            v-for="item in favorites"
+            :key="item.id"
+            :item="item"
+            :favorites="favorites"
+            @removeFavorites="$emit('removeFavorites', item)"
+            />  
+            
         </div>
 
 
@@ -106,19 +106,10 @@ export default {
 
 main {
     background: linear-gradient(0deg, rgba(48,52,67,1) 6%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 94%);
-    height: calc(100vh - 80px);
-    
-    .card-container {
-        margin: 0 auto;
-        width: $container-width;
-        height: 600px;
-        overflow-y: auto;
-        display: flex;
-        flex-wrap: wrap;    
-    }
+    max-height: calc(100vh - 80px);
 
     .home-container {
-        max-height: 100%;
+        max-height: calc(100vh - 80px);
         overflow-y: auto;
         h3 {
             margin-top: 15px;
@@ -133,7 +124,6 @@ main {
     }
     
     .search-container {
-        width: 100%;
         max-height: 100%;
   
         input {
@@ -156,7 +146,7 @@ main {
         .card-container {
             margin: 0 auto;
             width: $container-width;
-            max-height: 600px;
+            max-height: calc(100vh - 160px);
             overflow-y: auto;
             display: flex;
             flex-wrap: wrap;    
@@ -164,11 +154,13 @@ main {
     }
 
     .favorites-container {
-           width: 100%;
-            overflow-y: auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+        margin: 0 auto;
+        width: $container-width;
+        height: calc(100vh - 80px);
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        
     }
 }
 
