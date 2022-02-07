@@ -1,7 +1,7 @@
 <template>
     <header>
 
-        <img src="../assets/booley-plus.png" alt="logo">
+        <img @click="$emit('activeHome')" src="../assets/booley-plus.png" alt="logo">
 
         <ul>
             <li @click="$emit('activeHome')"> 
@@ -37,6 +37,7 @@ export default {
 
         img {
             height: 60px;
+            cursor: pointer;
         }
 
         ul {
