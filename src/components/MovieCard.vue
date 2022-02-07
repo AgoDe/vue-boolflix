@@ -23,10 +23,9 @@
             </div>
         
             <h3>Lingua originale: </h3>
-            <img
-            :alt="`${item.original_language}-flag`"
-            :src="`http://purecatamphetamine.github.io/country-flag-icons/3x2/${flagLang(item.original_language)}.svg`"
-            />
+            <div>
+                <flag-lang :language="item.original_language"/>
+            </div>
         
             <h3 class="title">Voto: </h3>
             <div>
@@ -69,7 +68,11 @@
 </template>
 
 <script>
+import FlagLang from './FlagLang.vue'
 export default {
+  components: {
+    FlagLang,
+    },
     props: {
         item: Object,
         favorites: Array,
@@ -87,9 +90,6 @@ export default {
                 return `https://image.tmdb.org/t/p/w342${item}`
             }
         },
-       flagLang: function(language) {
-         return language === 'en' ? 'GB' : language.toUpperCase();
-       },
        voteStar: function(number) {
            return Math.round(number / 2)
         }
