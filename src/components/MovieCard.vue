@@ -23,10 +23,8 @@
             </div>
         
             <h3>Lingua originale: </h3>
-            <div>
-                <flag-lang :language="item.original_language"/>
-            </div>
-        
+            <flag-lang :language="item.original_language"/>
+            
             <h3 class="title">Voto: </h3>
             <div>
                 <i 

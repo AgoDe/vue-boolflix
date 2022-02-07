@@ -56,7 +56,7 @@ export default {
       favoritesVisible: false,
       
     }
-  },
+  }, // end of data
   mounted() {
     // array popular movies
     axios.get('https://api.themoviedb.org/3/movie/popular?api_key=ad1668ee1fca2cd9ebdd9b7319f4ce6c').then((res) => {
@@ -65,6 +65,7 @@ export default {
         this.popularMovies.push(res.data.results[i])
       }
     })
+
     // array popular tv
     axios.get('https://api.themoviedb.org/3/tv/popular?api_key=ad1668ee1fca2cd9ebdd9b7319f4ce6c').then((res) => {
       for(let i = 0; i < 20; i++) {
@@ -72,6 +73,9 @@ export default {
         this.popularTv.push(res.data.results[i])
       }
     })
+  }, // end of mounted
+  computed: {
+    
   },
   methods: {
     addFavorites: function(item) {
@@ -115,14 +119,14 @@ export default {
       axios.get(`https://api.themoviedb.org/3/search/tv/?api_key=ad1668ee1fca2cd9ebdd9b7319f4ce6c&query=${searchInput}`).then((response) => {
         this.filteredTv = response.data.results;
         this.filteredTv.forEach(element => {
-          element.type = 'tv';
+        element.type = 'tv';
         this.generalFilter.push(element)
         });
       });  
     },
 
-  },
-  // end methods
+  }, // end of methods
+  
 }
 </script>
 

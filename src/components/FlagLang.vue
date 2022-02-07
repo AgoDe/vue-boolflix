@@ -1,6 +1,6 @@
 <template>
-    <div class="flag">
-        <img :src="`/images/${showFlag.path}`" :alt="showFlag.state">
+    <div class="flag"
+    :class="language">
     </div>
 </template>
 
@@ -8,62 +8,44 @@
 export default {
     props: {
         language: String,
-
-    },
-    data() {
-        return {
-            flags: [
-                {
-                state: 'italy',
-                abbr: 'it',
-                path: 'italy-flag.png',
-                },
-                {
-                state: 'france',
-                abbr: 'fr',
-                path: 'france-flag.png',
-                },
-                {
-                state: 'germany',
-                abbr: 'de',
-                path: 'germany-flag.png',
-                },
-                {
-                state: 'united-kingdom',
-                abbr: 'en',
-                path: 'united-kingdom-flag.png',
-                },
-                {
-                state: 'south-korea',
-                abbr: 'ko',
-                path: 'south-korea-flag.png',
-                },
-                {
-                state: 'spain',
-                abbr: 'es',
-                path: 'spain-flag.png',
-                },
-            ],
-
-        }
-    },
-    computed: {
-        showFlag: function() {
-           const flag = this.flags.filter((element) => {
-            return element.abbr === this.language
-           });
-            return flag[0]
-        }
     }
-    
 }
+
 </script>
 
 <style lang="scss" scoped>
 
-    img {
-        height: 25px;
-        width:  37px;
-    }
+ .flag {
+    width: 37px;
+    height: 25px;
+    margin: 0 auto;
+    background: url('../assets/download.png') center center;
+    background-size: cover;
+
+ }
+ .flag.en {
+    background: url(../assets/united-kingdom-flag.png) center center no-repeat;
+    background-size: contain;
+ }
+ .flag.it {
+    background: url(../assets/italy-flag.png) center center no-repeat;
+    background-size: contain;
+ }
+ .flag.fr {
+    background: url(../assets/france-flag.png) center center no-repeat;
+    background-size: contain;
+ }
+ .flag.es {
+    background: url(../assets/spain-flag.png) center center no-repeat;
+    background-size: contain;
+ }
+ .flag.ko {
+    background: url(../assets/south-korea-flag.png) center center no-repeat;
+    background-size: contain;
+ }
+ .flag.de {
+    background: url(../assets/germany-flag.png) center center no-repeat;
+    background-size: contain;
+ }
 
 </style>

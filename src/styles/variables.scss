@@ -1,6 +1,6 @@
 /* variabili movie-card */
-$card-height: 300px;
 $card-width: 200px;
+$card-height: $card-width *3/2;
 
 /* variabili main-layout */
 $container-width: 6 * $card-width + 15; // + 15 x scrollbar
