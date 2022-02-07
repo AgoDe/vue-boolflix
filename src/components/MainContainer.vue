@@ -139,7 +139,7 @@ main {
         input {
             width: 100%;
             height: 80px;
-            background-color: #4b4e5a;
+            background-color: $input-background;
             border: none;
             padding-left: 40px;
             font-size: 35px;
@@ -156,7 +156,7 @@ main {
         .card-container {
             margin: 0 auto;
             width: $container-width;
-            height: 600px;
+            max-height: 600px;
             overflow-y: auto;
             display: flex;
             flex-wrap: wrap;    
