@@ -31,12 +31,22 @@
             <h3>Lingua originale: </h3>
             <flag-lang :language="item.original_language"/>
             
-            <h3 class="title">Voto: </h3>
+            <h3>Voto: </h3>
             <div>
                 <i 
                 v-for="index in voteStar(item.vote_average)"
                 :key="index"
                 class="fas fa-star"></i>
+            </div>
+
+            <h3>Cast: </h3>
+            <div class="cast">
+                <div
+                v-for="(item, index) in castInfo"
+                :key="index"
+                > 
+                    {{ item}},
+                </div>
             </div>
 
             <!-- card footer -->
@@ -47,8 +57,7 @@
             class="card-footer tv" v-else>
                 TV SERIES
             </div>
-            <!-- / card footer -->
-
+            
             <div class=addfav>
                 <i
                 @click="$emit('removeFavorites', item)" 
@@ -61,9 +70,8 @@
                 class="fas fa-heart"
                 :class="{ active : favorites.includes(item)}">
                 </i>
-
-                
             </div>
+            <!-- / card footer -->
 
         </div>
         <!-- movie info (in card hover) -->
@@ -86,9 +94,21 @@ export default {
     data() {
         return {
             infoActive: false,
+            castInfo: []
         }
     },
+    mounted() {
+
+        axios.get(`https://api.themoviedb.org/3/${this.item.type}/${this.item.id}/credits?api_key=ad1668ee1fca2cd9ebdd9b7319f4ce6c`).then((res) => {
+                // this.castInfo = res.data.cast
+                for(let i = 0; i <5; i++) {
+                    this.castInfo.push(res.data.cast[i].name)
+                }
+        })
+        
+    },  
     methods: {
+       
         posterVerify: function(item) {
             if (item == null) {
                 return 'https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile.png'
@@ -99,17 +119,14 @@ export default {
        voteStar: function(number) {
            return Math.round(number / 2)
         },
-        showInfo: function() {
+        showInfo: function(type, id) {
             this.infoActive = true
+            this.getCredit(type, id)
         },
         hideInfo: function() {
             this.infoActive = false
-        }
-        // getCredit: function(type, item) {
-
-        //     axios.get('')
-
-        // }
+        },
+        
        
     },
     
@@ -143,12 +160,14 @@ export default {
             top: 0;
             padding: 10px 8px;
             background: rgba($color: $background, $alpha: 0.9);
+            font-size: 13px;
 
             text-align: center;
 
             h3 {
-                margin-top: 10px;
-                margin-bottom: 5px;
+                margin-top: 7px;
+                margin-bottom: 3px;
+                font-size: 14px;
             }
             img {
                 width: 30px;
@@ -202,14 +221,9 @@ export default {
                 &:hover .fa-times {
                     display: block;
                 }
-
             }
+        } // end of movie-info
 
-        }
-        //  &:hover>.movie-info{
-        //         display: inline-block;
-        //     }
-
-    }
+    } // end of movie-card
 
 </style>
