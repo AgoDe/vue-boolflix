@@ -102,7 +102,7 @@ export default {
 @import '@/styles/variables.scss';
 
 main {
-    max-height: calc(100vh - 80px);
+    max-height: calc(100% - 80px);
 
     .home-container {
         max-height: calc(100vh - 80px);
@@ -141,7 +141,7 @@ main {
         .card-container {
             margin: 0 auto;
             width: $container-width;
-            max-height: calc(100vh - 160px);
+            max-height: calc(100% - 160px);
             overflow-y: auto;
             display: flex;
             flex-wrap: wrap;    

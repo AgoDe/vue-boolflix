@@ -155,6 +155,6 @@ export default {
  #app {
    background: linear-gradient(0deg, rgba(48,52,67,1) 6%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 94%);
    color: #f9f9f9;
-   height: 100vh;
+   max-height: 100vh;
  }
 </style>
