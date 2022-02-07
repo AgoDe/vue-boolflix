@@ -102,10 +102,10 @@ export default {
 @import '@/styles/variables.scss';
 
 main {
-    max-height: calc(100% - 80px);
+    height: calc(100% - 80px);
 
     .home-container {
-        max-height: calc(100vh - 80px);
+        max-height: 100%;
         overflow-y: auto;
         h3 {
             margin-top: 15px;
@@ -119,7 +119,7 @@ main {
     } // end of home-container
     
     .search-container {
-        max-height: 100%;
+        height: 100%;
   
         input {
             width: 100%;
@@ -141,7 +141,7 @@ main {
         .card-container {
             margin: 0 auto;
             width: $container-width;
-            max-height: calc(100% - 160px);
+            height: calc(100% - 80px);
             overflow-y: auto;
             display: flex;
             flex-wrap: wrap;    
@@ -151,7 +151,7 @@ main {
     .favorites-container {
         margin: 0 auto;
         width: $container-width;
-        height: calc(100vh - 80px);
+        height: 100%;
         overflow-y: auto;
         display: flex;
         flex-wrap: wrap;
