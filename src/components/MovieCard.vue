@@ -1,5 +1,8 @@
 <template>
-     <div class="movie-card">
+     <div class="movie-card"
+     @mouseover="showInfo"
+     @mouseleave="hideInfo"
+     >
 
         <img 
         :src="posterVerify(item.poster_path)"
@@ -7,7 +10,10 @@
         >
 
         <!-- movie info (in card hover) -->
-        <div class="movie-info">
+        <div 
+        class="movie-info"
+        v-if="infoActive" 
+        >
                     
             <h3>Titolo: </h3>
             <div v-if="item.type == 'movie'">{{item.title}}</div>
@@ -66,6 +72,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import FlagLang from './FlagLang.vue'
 export default {
   components: {
@@ -74,10 +81,11 @@ export default {
     props: {
         item: Object,
         favorites: Array,
+        
     },
     data() {
         return {
-            
+            infoActive: false,
         }
     },
     methods: {
@@ -90,7 +98,19 @@ export default {
         },
        voteStar: function(number) {
            return Math.round(number / 2)
+        },
+        showInfo: function() {
+            this.infoActive = true
+        },
+        hideInfo: function() {
+            this.infoActive = false
         }
+        // getCredit: function(type, item) {
+
+        //     axios.get('')
+
+        // }
+       
     },
     
 }
@@ -115,7 +135,7 @@ export default {
             border-radius: 2px;
         }
         .movie-info {
-            display: none;
+            // display: none;
             height: 100%;
             width: 100%;
             position: absolute;
@@ -186,9 +206,9 @@ export default {
             }
 
         }
-         &:hover>.movie-info{
-                display: inline-block;
-            }
+        //  &:hover>.movie-info{
+        //         display: inline-block;
+        //     }
 
     }
 
