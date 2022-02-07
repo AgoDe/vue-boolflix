@@ -76,12 +76,10 @@
 <script>
 import MovieCard from './MovieCard.vue'
 
-
 export default {
   components: { 
-    MovieCard,
-    
-   },
+    MovieCard, 
+   }, // end of componets
     props: {
         generalFilter: Array,
         popularMovies: Array,
@@ -90,22 +88,20 @@ export default {
         searchVisible: Boolean,
         homeVisible: Boolean,
         favoritesVisible: Boolean,
-    },
+    }, // end of props
     data() {
         return {
             searchInput: ''
         }
-    },
-    methods: {
-    }
-}
+    }, // end of data
+
+}  // end of export
 </script>
 
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 
 main {
-    background: linear-gradient(0deg, rgba(48,52,67,1) 6%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 94%);
     max-height: calc(100vh - 80px);
 
     .home-container {
@@ -120,8 +116,7 @@ main {
             max-height: 360px;
             overflow-x: auto;
         }
-        
-    }
+    } // end of home-container
     
     .search-container {
         max-height: 100%;
@@ -151,7 +146,7 @@ main {
             display: flex;
             flex-wrap: wrap;    
         }
-    }
+    } // end of serch-container
 
     .favorites-container {
         margin: 0 auto;

@@ -26,9 +26,6 @@
     />
     <!-- / main container -->
 
-
-  
-
   </div>
 </template>
 
@@ -36,7 +33,6 @@
 import axios from 'axios'
 import HeaderContainer from './components/HeaderContainer.vue';
 import MainContainer from './components/MainContainer.vue';
-
 
 export default {
   components: {
@@ -74,9 +70,6 @@ export default {
       }
     })
   }, // end of mounted
-  computed: {
-    
-  },
   methods: {
     addFavorites: function(item) {
         this.favorites.push(item)
@@ -104,10 +97,10 @@ export default {
       this.homeVisible = false;
       this.searchVisible = false;
     },
-
     searchApi: function(searchInput) {
 
       this.generalFilter = [];
+
       axios.get(`https://api.themoviedb.org/3/search/movie/?api_key=ad1668ee1fca2cd9ebdd9b7319f4ce6c&query=${searchInput}`).then((response) => {
         this.filteredMovies = response.data.results;
         this.filteredMovies.forEach(element => {
@@ -124,7 +117,6 @@ export default {
         });
       });  
     },
-
   }, // end of methods
   
 }
@@ -135,6 +127,7 @@ export default {
 
 @import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -160,7 +153,7 @@ export default {
   /* / scrollbar */
 }
  #app {
-   background: black;
+   background: linear-gradient(0deg, rgba(48,52,67,1) 6%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 94%);
    color: #f9f9f9;
    height: 100vh;
  }

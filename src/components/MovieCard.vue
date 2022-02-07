@@ -82,6 +82,7 @@
 <script>
 import axios from 'axios'
 import FlagLang from './FlagLang.vue'
+
 export default {
   components: {
     FlagLang,
@@ -89,7 +90,6 @@ export default {
     props: {
         item: Object,
         favorites: Array,
-        
     },
     data() {
         return {
@@ -106,9 +106,8 @@ export default {
                 }
         })
         
-    },  
+    }, // end of mounted
     methods: {
-       
         posterVerify: function(item) {
             if (item == null) {
                 return 'https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile.png'
@@ -125,11 +124,8 @@ export default {
         },
         hideInfo: function() {
             this.infoActive = false
-        },
-        
-       
-    },
-    
+        }, 
+    }, // end of methods
 }
 </script>
 
